@@ -1,31 +1,29 @@
 set number
 set relativenumber
-set mouse=a
+set mouse=r
 syntax enable
 set showcmd
 set encoding=utf-8
 set showmatch
+set ignorecase
 
 call plug#begin('~/.vim/plugged')
 
-" comments
-
+" Add comments using gcc
 Plug 'tpope/vim-commentary'
+
+" Status bar
 Plug 'vim-airline/vim-airline'
+
+" Fuzzy finder searcher
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
+" Remembers pursor position
+Plug 'farmergreg/vim-lastplace'
 cal plug#end()
 
-" " Copy to clipboard
-vnoremap  <leader>y  "+y
-nnoremap  <leader>Y  "+yg_
-nnoremap  <leader>y  "+y
-nnoremap  <leader>yy  "+yy
-
-" " Paste from clipboard
-nnoremap <leader>p "+p
-nnoremap <leader>P "+P
-vnoremap <leader>p "+p
-vnoremap <leader>P "+P
+" " Search files using fzf
+nnoremap <C-p> :GFiles<Cr>
+map <esc> :noh<CR>
 
