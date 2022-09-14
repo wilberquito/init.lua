@@ -70,6 +70,9 @@ Plug 'pangloss/vim-javascript'
 " Intellisense engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Dummy text of loremipsum
+Plug 'vim-scripts/loremipsum'
+
 cal plug#end()
 
 nnoremap <C-f> :Files<Cr>
