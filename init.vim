@@ -1,10 +1,40 @@
+" Shows line numbers
 set number
+
+" Shows number relative to current line
 set relativenumber
+
 set mouse=r
+
 set showcmd
+
 set encoding=utf-8
+
+" Underlines matches
 set showmatch
+
+" Search is not case sensitive
 set ignorecase
+
+" Use spaces instead of tabs
+set expandtab
+
+" Be smart when using tabs
+set smarttab
+
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+
+" Auto indent
+set ai
+
+" Smart inden
+set si
+
+" Wrap lines
+set wrap
+
 syntax enable
 
 call plug#begin('~/.vim/plugged')
