@@ -80,3 +80,5 @@ nnoremap <C-p> :GFiles<Cr>
 map <esc> :noh<CR>
 map <C-t> :NERDTreeToggle<Cr>
 
+" Quit nerdtree when file has been open
+let NERDTreeQuitOnOpen=1
