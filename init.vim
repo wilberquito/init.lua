@@ -57,6 +57,9 @@ Plug 'evanleck/vim-svelte'
 " Prettier
 Plug 'prettier/vim-prettier', {'do': 'npm install'}
 
+" Close html tags
+Plug 'alvan/vim-closetag'
+
 cal plug#end()
 
 nnoremap <C-f> :Files<Cr>
@@ -82,7 +85,10 @@ inoremap <silent><expr> <Tab>
 " Prettier Settings
 let g:prettier#quickfix_enabled = 0
 let g:prettier#autoformat_require_pragma = 0
-au BufWritePre,TextChanged,InsertLeave *.css,*.svelte,*.pcss,*.html,*.ts,*.js,*.json PrettierAsync
+au BufWritePre *.css,*.svelte,*.pcss,*.html,*.ts,*.js,*.json PrettierAsync
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+
+" Configure file format close tags
+let g:closetag_filetypes = 'html,xhtml,phtml,svelte'
 
