@@ -16,25 +16,6 @@ set showmatch
 " Search is not case sensitive
 set ignorecase
 
-" Use spaces instead of tabs
-set expandtab
-
-" Be smart when using tabs
-set smarttab
-
-" 1 tab == 4 spaces
-set shiftwidth=4
-set tabstop=4
-
-" Auto indent
-set ai
-
-" Smart inden
-set si
-
-" Wrap lines
-set wrap
-
 syntax enable
 
 call plug#begin('~/.vim/plugged')
@@ -61,9 +42,6 @@ Plug 'Yggdroot/indentLine'
 " Closes pair at new open
 Plug 'jiangmiao/auto-pairs'
 
-" Svelte
-Plug 'evanleck/vim-svelte'
-
 " JS
 Plug 'pangloss/vim-javascript'
 
@@ -72,6 +50,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Dummy text of loremipsum
 Plug 'vim-scripts/loremipsum'
+
+" Svelte
+Plug 'evanleck/vim-svelte'
+
+" Prettier
+Plug 'prettier/vim-prettier', {'do': 'npm install'}
 
 cal plug#end()
 
@@ -82,3 +66,23 @@ map <C-t> :NERDTreeToggle<Cr>
 
 " Quit nerdtree when file has been open
 let NERDTreeQuitOnOpen=1
+
+" Remap CoC autocompletation
+" use <tab> for trigger completion and navigate to the next complete item
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+
+" Prettier Settings
+let g:prettier#quickfix_enabled = 0
+let g:prettier#autoformat_require_pragma = 0
+au BufWritePre,TextChanged,InsertLeave *.css,*.svelte,*.pcss,*.html,*.ts,*.js,*.json PrettierAsync
+
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+
