@@ -1,34 +1,64 @@
-" Shows line numbers
-set number
-
-" Shows number relative to current line
-set relativenumber
-
-set mouse=r
-
-set showcmd
-
 set encoding=utf-8
 
-" Underlines matches
-set showmatch
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
 
-" Search is not case sensitive
+" local vim configuration
+set exrc
+
+" line numbers
+set relativenumber
+set number
+
+" search 
+set nohlsearch
+set incsearch
+
+" fast swapping
+set hidden
+
+" stop err bells
+set noerrorbells
+
+" stop wrapping lines
+set nowrap
+
+" search ignoring case sensitive
 set ignorecase
 
-syntax enable
+" handle buffers
+set noswapfile
+set nobackup
+
+" scroll
+set scrolloff=12
+
+" give more space for displaying messages
+set cmdheight=2
+
+" show real time keyboard interaction
+set showcmd
+
+" syntax enable
 
 call plug#begin('~/.vim/plugged')
 
 " Easy comments
 Plug 'tpope/vim-commentary'
 
+" Telescope
+Plug 'nvim-treesitter/nvim-treesitter'
+
+Plug 'nvim-lua/plenary.nvim'
+
+Plug 'nvim-telescope/telescope.nvim'
+
+Plug 'gruvbox-community/gruvbox'
+
 " Status bar
 Plug 'vim-airline/vim-airline'
-
-" Fuzzy finder searcher
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 
 " Set cursor in file last place
 Plug 'farmergreg/vim-lastplace'
@@ -36,55 +66,47 @@ Plug 'farmergreg/vim-lastplace'
 " File navigation
 Plug 'scrooloose/nerdtree'
 
-" Plugin for see a vertical line in each ident
-Plug 'Yggdroot/indentLine'
-
 " Closes pair at new open
 Plug 'jiangmiao/auto-pairs'
 
 " JS
 Plug 'pangloss/vim-javascript'
 
-" Intellisense engine
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Dummy text of loremipsum
-Plug 'vim-scripts/loremipsum'
-
 " Svelte
 Plug 'evanleck/vim-svelte'
-
-" Prettier
-Plug 'prettier/vim-prettier', {'do': 'npm install'}
+Plug 'othree/html5.vim'
 
 " Close html tags
 Plug 'alvan/vim-closetag'
 
-filetype plugin indent on
-" show existing tab with 4 spaces width
-set tabstop=4
+" Intellisense engine
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" when indenting with '>', use 4 spaces width
-set shiftwidth=4
-
-" On pressing tab, insert 4 spaces
-set expandtab
-
-set paste        
-set noai        
-set noautoindent
+" Prettier
+Plug 'prettier/vim-prettier', {'do': 'npm install'}
 
 cal plug#end()
 
-nnoremap <C-f> :Files<Cr>
-nnoremap <C-p> :GFiles<Cr>
-map <esc> :noh<CR>
-map <C-t> :NERDTreeToggle<Cr>
 
-" Quit nerdtree when file has been open
+colorscheme gruvbox
+
+let mapleader = " "
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Nerd Tree 
+nnoremap <leader>t <cmd>NERDTreeToggle<cr>
 let NERDTreeQuitOnOpen=1
 
-" Remap CoC autocompletation
+" Vim Svelte option 
+let g:svelte_indent_script = 0
+let g:svelte_indent_style = 0
+
+" CoC intellisense
 " use <tab> for trigger completion and navigate to the next complete item
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -99,10 +121,7 @@ inoremap <silent><expr> <Tab>
 " Prettier Settings
 let g:prettier#quickfix_enabled = 0
 let g:prettier#autoformat_require_pragma = 0
-au BufWritePre *.css,*.svelte,*.pcss,*.html,*.ts,*.js,*.json PrettierAsync
-
-command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
-
-" Configure file format close tags
 let g:closetag_filetypes = 'html,xhtml,phtml,svelte'
+au BufWritePre *.css,*.svelte,*.pcss,*.html,*.ts,*.js,*.json PrettierAsync
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
