@@ -97,6 +97,9 @@ nnoremap <leader>v <C-w>v
 nnoremap <leader>h <C-w>s
 nnoremap <leader>k <C-w><C-w>
 nnoremap <leader>q <C-w>q
+nnoremap <leader>w <cmd>w<cr>
+nnoremap <leader>x <cmd>x<cr>
+
 
 
 vnoremap J :m '>+1<cr>gv=gv
