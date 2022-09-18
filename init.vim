@@ -92,6 +92,16 @@ colorscheme gruvbox
 
 let mapleader = " "
 
+" Vim remap
+nnoremap <leader>v <C-w>v
+nnoremap <leader>h <C-w>s
+nnoremap <leader>k <C-w><C-w>
+nnoremap <leader>q <C-w>q
+
+
+vnoremap J :m '>+1<cr>gv=gv
+vnoremap K :m '<-2<cr>gv=gv
+
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
