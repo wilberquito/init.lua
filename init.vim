@@ -93,9 +93,12 @@ colorscheme gruvbox
 let mapleader = " "
 
 " Vim remap
-nnoremap <leader>v <C-w>v
-nnoremap <leader>h <C-w>s
-nnoremap <leader>k <C-w><C-w>
+nnoremap <leader>= <C-w>v
+nnoremap <leader>- <C-w>s
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+nnoremap <leader>h <C-w>h
 nnoremap <leader>q <C-w>q
 nnoremap <leader>w <cmd>w<cr>
 nnoremap <leader>e <cmd>q!<cr>
