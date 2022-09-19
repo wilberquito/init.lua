@@ -1,55 +1,61 @@
 syntax on
 set encoding=utf-8
+set cursorline
+let mapleader = " "
 
+"tab settings
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
 
-" local vim configuration
+"local vim configuration
 set exrc
 
-" line numbers
+"line numbers
 set relativenumber
 set number
 
-" search 
+"search 
 set nohlsearch
 set incsearch
 
-" fast swapping
+"fast swapping
 set hidden
 
-" stop err bells
+"stop err bells
 set noerrorbells
 
-" stop wrapping lines
+"stop wrapping lines
 set nowrap
 
-" search ignoring case sensitive
+"search ignoring case sensitive
 set ignorecase
 
-" handle buffers
+"handle buffers
 set noswapfile
 set nobackup
 
-" scroll
+"scroll
 set scrolloff=12
 
-" give more space for displaying messages
+"give more space for displaying messages
 set cmdheight=2
 
-" show real time keyboard interaction
+"show real time keyboard interaction
 set showcmd
 
-" syntax enable
+"very useful for ident files
+autocmd Filetype yaml set cursorcolumn
+autocmd Filetype yml set cursorcolumn
+autocmd Filetype python set cursorcolumn
 
 call plug#begin('~/.vim/plugged')
 
-" Easy comments
+"easy comments
 Plug 'tpope/vim-commentary'
 
-" Telescope
+"telescope
 Plug 'nvim-treesitter/nvim-treesitter'
 
 Plug 'nvim-lua/plenary.nvim'
@@ -58,42 +64,42 @@ Plug 'nvim-telescope/telescope.nvim'
 
 Plug 'gruvbox-community/gruvbox'
 
-" Status bar
+"status bar
 Plug 'vim-airline/vim-airline'
 
-" Set cursor in file last place
+"set cursor in file last place
 Plug 'farmergreg/vim-lastplace'
 
-" File navigation
+"file navigation
 Plug 'scrooloose/nerdtree'
 
-" Closes pair at new open
+"closes pair at new open
 Plug 'jiangmiao/auto-pairs'
 
-" JS
+"js
 Plug 'pangloss/vim-javascript'
 
-" Svelte
+"svelte
 Plug 'evanleck/vim-svelte'
 Plug 'othree/html5.vim'
 
-" Close html tags
+"close html tags
 Plug 'alvan/vim-closetag'
 
-" Intellisense engine
+"intellisense engine
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Prettier
+"prettier
 Plug 'prettier/vim-prettier', {'do': 'npm install'}
+
+"highligh yanked conted
+Plug 'machakann/vim-highlightedyank'
 
 cal plug#end()
 
+colorscheme gruvbox
 
-" colorscheme gruvbox
-
-let mapleader = " "
-
-" Vim remap
+"vim remap
 nnoremap <leader>= <C-w>v
 nnoremap <leader>- <C-w>s
 nnoremap <leader>j <C-w>j
@@ -105,21 +111,21 @@ nnoremap <leader>w <cmd>w<cr>
 nnoremap <leader>e <cmd>q!<cr>
 nnoremap <leader>x <cmd>x<cr>
 
-" Let moves lines up and down in visual mode
+"let moves lines up and down in visual mode
 vnoremap J :m '>+1<cr>gv=gv
 vnoremap K :m '<-2<cr>gv=gv
 
-" Find files using Telescope command-line sugar.
+"find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-" Nerd Tree 
+"nerd tree 
 nnoremap <leader>t <cmd>NERDTreeToggle<cr>
 let NERDTreeQuitOnOpen=1
 
-" Vim Svelte option 
+"vim svelte option 
 let g:svelte_indent_script = 0
 let g:svelte_indent_style = 0
 
@@ -135,7 +141,7 @@ inoremap <silent><expr> <Tab>
       \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
 
-" Prettier Settings
+"prettier settings
 let g:prettier#quickfix_enabled = 0
 let g:prettier#autoformat_require_pragma = 0
 let g:closetag_filetypes = 'html,xhtml,phtml,svelte'
