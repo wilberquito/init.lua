@@ -1,3 +1,4 @@
+syntax on
 set encoding=utf-8
 
 set tabstop=4 softtabstop=4
@@ -88,7 +89,7 @@ Plug 'prettier/vim-prettier', {'do': 'npm install'}
 cal plug#end()
 
 
-colorscheme gruvbox
+" colorscheme gruvbox
 
 let mapleader = " "
 
