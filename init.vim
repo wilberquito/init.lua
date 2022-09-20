@@ -17,7 +17,7 @@ set relativenumber
 set number
 
 "search 
-set nohlsearch
+set hlsearch
 set incsearch
 
 "fast swapping
