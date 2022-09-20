@@ -115,6 +115,9 @@ nnoremap <leader>x <cmd>x<cr>
 vnoremap J :m '>+1<cr>gv=gv
 vnoremap K :m '<-2<cr>gv=gv
 
+"set cursor in last position when yanking in visual mode
+vnoremap y mcy`c
+
 "find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
