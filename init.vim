@@ -45,6 +45,9 @@ set cmdheight=2
 "show real time keyboard interaction
 set showcmd
 
+"let scroll with mouse
+set mouse=a
+
 "very useful for ident files
 autocmd Filetype yaml set cursorcolumn
 autocmd Filetype yml set cursorcolumn
