@@ -1,6 +1,7 @@
 syntax on
 set encoding=utf-8
 set cursorline
+
 let mapleader = " "
 
 "tab settings
@@ -102,17 +103,24 @@ cal plug#end()
 
 colorscheme gruvbox
 
-"vim remap
+" --- vim remap ---
+
+" open windows
 nnoremap <leader>= <C-w>v
 nnoremap <leader>- <C-w>s
+" open windows
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>l <C-w>l
 nnoremap <leader>h <C-w>h
-nnoremap <leader>q <C-w>q
-nnoremap <leader>w <cmd>w<cr>
-nnoremap <leader>e <cmd>q!<cr>
-nnoremap <leader>x <cmd>x<cr>
+" resize windows:
+nnoremap <leader><Left> <cmd>vertical resize -4<cr>
+nnoremap <leader><Right> <cmd>vertical resize +4<cr>
+nnoremap <leader><Down> <cmd>resize -2<cr>
+nnoremap <leader><Up> <cmd>resize +2<cr>
+" navigate between buffers
+nnoremap <C-l> <cmd>bnext<cr>
+nnoremap <C-h> <cmd>bnext<cr>
 
 "let moves lines up and down in visual mode
 vnoremap J :m '>+1<cr>gv=gv
@@ -135,18 +143,6 @@ let NERDTreeQuitOnOpen=1
 let g:svelte_indent_script = 0
 let g:svelte_indent_style = 0
 
-" CoC intellisense
-" use <tab> for trigger completion and navigate to the next complete item
-function! CheckBackspace() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-
-inoremap <silent><expr> <Tab>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-
 "prettier settings
 let g:prettier#quickfix_enabled = 0
 let g:prettier#autoformat_require_pragma = 0
@@ -154,3 +150,4 @@ let g:closetag_filetypes = 'html,xhtml,phtml,svelte'
 au BufWritePre *.css,*.svelte,*.pcss,*.html,*.ts,*.js,*.json PrettierAsync
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
+source $HOME/.config/nvim/plug-config/coc.vim
