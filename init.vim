@@ -99,7 +99,9 @@ Plug 'prettier/vim-prettier', {'do': 'npm install'}
 "highligh yanked conted
 Plug 'machakann/vim-highlightedyank'
 
-cal plug#end()
+Plug 'preservim/vimux'
+
+call plug#end()
 
 colorscheme gruvbox
 
