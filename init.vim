@@ -138,7 +138,7 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 "nerd tree 
-nnoremap <leader>t <cmd>NERDTreeToggle<cr>
+nnoremap <leader>e <cmd>NERDTreeToggle<cr>
 let NERDTreeQuitOnOpen=1
 
 "vim svelte option 
