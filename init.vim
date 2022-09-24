@@ -105,6 +105,10 @@ call plug#end()
 
 colorscheme gruvbox
 
+" external configuration
+source $HOME/.config/nvim/plug-config/coc.vim
+source $HOME/.config/nvim/plug-config/vimux.vim
+
 " --- vim remap ---
 
 " open windows
@@ -152,4 +156,3 @@ let g:closetag_filetypes = 'html,xhtml,phtml,svelte'
 au BufWritePre *.css,*.svelte,*.pcss,*.html,*.ts,*.js,*.json PrettierAsync
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
-source $HOME/.config/nvim/plug-config/coc.vim
