@@ -40,6 +40,9 @@ set nobackup
 "scroll
 set scrolloff=6
 
+"allows neovim to access to system clipboard
+set clipboard="unnamedplus"
+
 "give more space for displaying messages
 set cmdheight=2
 
