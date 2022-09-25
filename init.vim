@@ -107,15 +107,13 @@ Plug 'prettier/vim-prettier', {'do': 'npm install'}
 "highligh yanked conted
 Plug 'machakann/vim-highlightedyank'
 
-Plug 'preservim/vimux'
-
 call plug#end()
 
 colorscheme gruvbox
 
 " external configuration
 source $HOME/.config/nvim/plug-config/coc.vim
-source $HOME/.config/nvim/plug-config/vimux.vim
+source $HOME/.config/nvim/wsl2-clipboard.vim
 
 " --- vim remap ---
 
