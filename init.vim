@@ -52,6 +52,11 @@ set showcmd
 "let scroll with mouse
 set mouse=a
 
+"don't need to see things like -- INSERT -- anymore
+set noshowmode
+"
+"
+"
 "very useful for ident files
 autocmd Filetype yaml set cursorcolumn
 autocmd Filetype yml set cursorcolumn
