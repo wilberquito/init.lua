@@ -110,6 +110,8 @@ Plug 'machakann/vim-highlightedyank'
 "Haskell syntax highligh and identation
 Plug 'neovimhaskell/haskell-vim'
 
+Plug 'kshenoy/vim-signature'
+
 call plug#end()
 
 colorscheme gruvbox
