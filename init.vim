@@ -110,16 +110,20 @@ Plug 'machakann/vim-highlightedyank'
 "Haskell syntax highligh and identation
 Plug 'neovimhaskell/haskell-vim'
 
+"Plugin to toggle, display and navigate marks
 Plug 'kshenoy/vim-signature'
 
 call plug#end()
 
-colorscheme gruvbox
 
 " external configuration
 source $HOME/.config/nvim/plug-config/coc.vim
 source $HOME/.config/nvim/plug-config/haskell.vim
+source $HOME/.config/nvim/plug-config/gruvbox.vim
 source $HOME/.config/nvim/wsl2-clipboard.vim
+
+" sets color scheme
+colorscheme gruvbox
 
 " --- vim remap ---
 
