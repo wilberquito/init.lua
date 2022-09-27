@@ -54,9 +54,8 @@ set mouse=a
 
 "don't need to see things like -- INSERT -- anymore
 set noshowmode
-"
-"
-"
+
+
 "very useful for ident files
 autocmd Filetype yaml set cursorcolumn
 autocmd Filetype yml set cursorcolumn
@@ -74,7 +73,8 @@ Plug 'nvim-lua/plenary.nvim'
 
 Plug 'nvim-telescope/telescope.nvim'
 
-Plug 'gruvbox-community/gruvbox'
+"color scheme
+Plug 'morhetz/gruvbox'
 
 "status bar
 Plug 'vim-airline/vim-airline'
