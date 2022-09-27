@@ -114,6 +114,9 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'kshenoy/vim-signature'
 
 call plug#end()
+" sets color scheme
+colorscheme gruvbox
+
 
 
 " external configuration
@@ -121,9 +124,6 @@ source $HOME/.config/nvim/plug-config/coc.vim
 source $HOME/.config/nvim/plug-config/haskell.vim
 source $HOME/.config/nvim/plug-config/gruvbox.vim
 source $HOME/.config/nvim/wsl2-clipboard.vim
-
-" sets color scheme
-colorscheme gruvbox
 
 " --- vim remap ---
 
