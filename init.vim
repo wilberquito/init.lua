@@ -80,7 +80,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'farmergreg/vim-lastplace'
 
 "file navigation
-Plug 'scrooloose/nerdtree'
+Plug 'preservim/nerdtree' |
+            \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+            \ Plug 'ryanoasis/vim-devicons'
 
 "closes pair at new open
 Plug 'jiangmiao/auto-pairs'
@@ -111,15 +113,16 @@ Plug 'neovimhaskell/haskell-vim'
 Plug 'kshenoy/vim-signature'
 
 call plug#end()
+
 " sets color scheme
 colorscheme gruvbox
-
 
 
 " external configuration
 source $HOME/.config/nvim/plug-config/coc.vim
 source $HOME/.config/nvim/plug-config/haskell.vim
-source $HOME/.config/nvim/plug-config/gruvbox.vim
+source $HOME/.config/nvim/plug-config/nerdtree.vim
+source $HOME/.config/nvim/plug-config/nerdtree-git.vim
 source $HOME/.config/nvim/wsl2-clipboard.vim
 
 " --- vim remap ---
@@ -159,9 +162,8 @@ nnoremap <leader>h <cmd>:Buffers <cr>
 
 " --- Nerdtree ---
 
-"nerd tree 
+"toggle nerd tree 
 nnoremap <leader>e <cmd>NERDTreeToggle<cr>
-let NERDTreeQuitOnOpen=1
 
 "vim svelte option 
 let g:svelte_indent_script = 0
