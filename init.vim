@@ -66,12 +66,9 @@ call plug#begin('~/.vim/plugged')
 "easy comments
 Plug 'tpope/vim-commentary'
 
-"telescope
-Plug 'nvim-treesitter/nvim-treesitter'
-
-Plug 'nvim-lua/plenary.nvim'
-
-Plug 'nvim-telescope/telescope.nvim'
+" fzf
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 "color scheme
 Plug 'morhetz/gruvbox'
@@ -130,16 +127,19 @@ source $HOME/.config/nvim/wsl2-clipboard.vim
 " open windows
 nnoremap <leader>= <C-w>v
 nnoremap <leader>- <C-w>s
+
 " open windows
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>l <C-w>l
 nnoremap <leader>h <C-w>h
+
 " resize windows:
 nnoremap <leader><Left> <cmd>vertical resize -4<cr>
 nnoremap <leader><Right> <cmd>vertical resize +4<cr>
 nnoremap <leader><Down> <cmd>resize -2<cr>
 nnoremap <leader><Up> <cmd>resize +2<cr>
+
 " navigate between buffers
 nnoremap <C-l> <cmd>bnext<cr>
 nnoremap <C-h> <cmd>bnext<cr>
@@ -151,11 +151,13 @@ vnoremap K :m '<-2<cr>gv=gv
 "set cursor in last position when yanking in visual mode
 vnoremap y mcy`c
 
-"find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+"map for search of elements in vim setup
+nnoremap <leader>g <cmd>:GFiles<cr>
+nnoremap <leader>p <cmd>:Files<cr> 
+nnoremap <leader>f <cmd>:Rg <cr> 
+nnoremap <leader>h <cmd>:Buffers <cr> 
+
+" --- Nerdtree ---
 
 "nerd tree 
 nnoremap <leader>e <cmd>NERDTreeToggle<cr>
