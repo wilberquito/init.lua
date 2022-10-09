@@ -1,3 +1,4 @@
+vim.o.cursorline = true -- highlight current line
 vim.o.exrc = true  -- exec a local vimrc (like direnv)
 vim.o.relativenumber = true  -- relative number in gutter
 vim.o.nu = true  -- Indent current line number
@@ -19,7 +20,10 @@ vim.o.softtabstop = 0
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.smartindent = true
-
+-- emoji is true by default but makes (n)vim treat all emoji as double width
+-- which breaks rendering so we turn this off.
+-- CREDIT: https://www.youtube.com/watch?v=F91VWOelFNE
+vim.o.emoji = false
 vim.o.ignorecase = true  -- ignore case when searching
 vim.o.smartcase = true  -- Unless we explicitly use cases in search
 vim.o.splitbelow = true  -- automagically h split going down

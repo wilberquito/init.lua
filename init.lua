@@ -10,6 +10,3 @@ require "lsp.lsp"
 
 require 'plugins.packer'
 
-require "clipboard"
-
-require 'plugins.packer'

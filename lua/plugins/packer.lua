@@ -21,11 +21,6 @@ return require('packer').startup(function()
 	----------------
 	-- Plugin development
 	----------------
-	-- Work in progress. Using upstream by default:
-	use 'jpmcb/nvim-go'
-	-- If working locally, comment out above 
-	-- and uncomment below. Replace path with appropriate working local config
-	--use '~/workspace/nvim-go'
 
 	-- Luasnip (primarily for hrsh7th/nvim-cmp)
 	use 'L3MON4D3/LuaSnip'
@@ -33,6 +28,16 @@ return require('packer').startup(function()
 
 	-- Load spicy gruvbox color theme
 	use 'gruvbox-community/gruvbox'
+	-- Load spicy catppucin color theme
+    use {
+    	"catppuccin/nvim",
+    	as = "catppuccin",
+    	config = function()
+     		vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+    		require("catppuccin").setup()
+    		vim.api.nvim_command "colorscheme catppuccin"
+    	end
+    }
 
 	-- Treesitter is life
 	use {
@@ -98,15 +103,10 @@ return require('packer').startup(function()
 		--end,
 	--}
 
-	use {'mg979/vim-visual-multi'}
-
 	-- Typescript. Oh Typescript. Where art thou Typescript.
 	use 'jose-elias-alvarez/null-ls.nvim'
 	use 'jose-elias-alvarez/nvim-lsp-ts-utils'
 
-    -- Rust
-	use 'simrat39/rust-tools.nvim'
-	use 'mfussenegger/nvim-dap'
 	use 'nvim-lua/popup.nvim'
 
 	-- Automatically set up your configuration after cloning packer.nvim
