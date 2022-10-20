@@ -44,3 +44,5 @@ vim.cmd[[
     augroup END
 ]]
 
+
+vim.api.nvim_command "colorscheme gruvbox"
