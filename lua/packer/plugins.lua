@@ -28,16 +28,17 @@ return require('packer').startup(function()
 
 	-- Load spicy gruvbox color theme
 	use 'gruvbox-community/gruvbox'
-	-- Load spicy catppucin color theme
-    use {
-    	"catppuccin/nvim",
-    	as = "catppuccin",
-    	config = function()
-     		vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
-    		require("catppuccin").setup()
-    	end
-    }
 
+    -- Load github theme
+    use ({ 
+        'projekt0n/github-nvim-theme',
+        config = function()
+            require('github-theme').setup({
+                theme_style = "dark_default"
+            })
+        end
+    })
+    
 	-- Treesitter is life
 	use {
 		'nvim-treesitter/nvim-treesitter',
