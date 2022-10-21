@@ -28,4 +28,8 @@ map("n", "N", "Nzz", cmd_options)
 map("n", ";", ":", cmd_options)
 map("n", ":", ";", cmd_options)
 
+-- Easy way to enter in command instructions
+map("n", "}", "{", cmd_options)
+map("n", "{", "}", cmd_options)
+
 
