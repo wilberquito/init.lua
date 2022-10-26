@@ -9,6 +9,12 @@ return require('packer').startup(function()
 	-- Packer just manages itself
 	use 'wbthomason/packer.nvim'
 
+    -- remember cursor last place
+    use 'ethanholz/nvim-lastplace'
+
+    -- sexy scroll
+    use 'karb94/neoscroll.nvim'
+
 	-- nvim LSP configs
 	use 'neovim/nvim-lspconfig'
 	use 'hrsh7th/cmp-nvim-lsp'
