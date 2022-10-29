@@ -101,14 +101,6 @@ return require('packer').startup(function()
 		end
 	}
 
-	--use {
-		--'startup-nvim/startup.nvim',
-		--requires = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
-		--config = function()
-			--require('startup').setup()
-		--end,
-	--}
-
 	-- Typescript. Oh Typescript. Where art thou Typescript.
 	use 'jose-elias-alvarez/null-ls.nvim'
 	use 'jose-elias-alvarez/nvim-lsp-ts-utils'
