@@ -12,9 +12,6 @@ return require('packer').startup(function()
     -- remember cursor last place
     use 'ethanholz/nvim-lastplace'
 
-    -- sexy scroll
-    use 'karb94/neoscroll.nvim'
-
 	-- nvim LSP configs
 	use 'neovim/nvim-lspconfig'
 	use 'hrsh7th/cmp-nvim-lsp'
