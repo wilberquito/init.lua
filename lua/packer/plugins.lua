@@ -31,16 +31,6 @@ return require('packer').startup(function()
 
 	-- Load spicy gruvbox color theme
 	use 'gruvbox-community/gruvbox'
-
-    -- Load github theme
-    use ({ 
-        'projekt0n/github-nvim-theme',
-        config = function()
-            require('github-theme').setup({
-                theme_style = "dimmed"
-            })
-        end
-    })
     
 	-- Treesitter is life
 	use {
