@@ -46,7 +46,7 @@ vim.opt.listchars = {  -- see hidden chars and their colors
 vim.o.list = true
 vim.o.updatetime = 100
 
-vim.o.guicursor='i:blinkon1' -- let cursor blink in insert mode
+vim.o.guicursor='i-ci:ver30-iCursor-blinkwait300-blinkon200-blinkoff150' -- let cursor blink in insert mode
 
 -- highlight yanked text for 200ms using the "Visual" highlight group
 vim.cmd[[
