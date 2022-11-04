@@ -1,4 +1,5 @@
 vim.o.cursorline = true -- highlight current line
+vim.o.cursorcolumn = true -- highlight current column 
 vim.o.exrc = true  -- exec a local vimrc (like direnv)
 vim.o.relativenumber = true  -- relative number in gutter
 vim.o.nu = true  -- Indent current line number
