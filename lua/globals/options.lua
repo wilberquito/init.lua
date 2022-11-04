@@ -1,7 +1,11 @@
 vim.o.cursorline = true -- highlight current line
 vim.o.cursorcolumn = true -- highlight current column 
 vim.o.exrc = true  -- exec a local vimrc (like direnv)
+
+-- Numbers
+vim.o.number = true
 vim.o.relativenumber = true  -- relative number in gutter
+
 vim.o.nu = true  -- Indent current line number
 vim.o.hlsearch = false  -- Don't highlight search
 vim.o.incsearch = true  -- jump incrementally to search results
@@ -14,6 +18,11 @@ vim.o.undodir = "~/.nvim/undodir"  -- sets where undo files land
 vim.o.scrolloff = 8  -- scroll offwidth so it's not the very bottom
 vim.o.colorcolumn = "80"  -- bar at 80 chars width
 vim.o.signcolumn = "yes" -- always set the far left bar/column
+
+vim.opt.termguicolors = true
+
+vim.opt.errorbells = false
+
 -- vim.o.nocompatible = true
 vim.o.mouse = "a"  -- always enable mouse mode
 vim.o.tabstop = 4  -- Tabs are 4 spaces: Reference - https://stackoverflow.com/questions/1878974/redefine-tab-as-4-spaces
