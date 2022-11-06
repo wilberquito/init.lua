@@ -9,6 +9,10 @@ map('n', '<C-j>', '<C-w>j', nr_opts)
 map('n', '<C-k>', '<C-w>k', nr_opts)
 map('n', '<C-l>', '<C-w>l', nr_opts)
 
+-- Split panes
+map('n', '<leader>ss', ':split<CR>', opts)
+map('n', '<leader>S', ':vsplit<CR>', opts)
+
 -- Save
 map("n", "<leader>fs", ":w<CR>", nr_opts)
 map("n", "<leader>fr", ":source $MYVIMRC<CR>", nr_opts)
