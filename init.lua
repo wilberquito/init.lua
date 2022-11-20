@@ -7,4 +7,3 @@ require 'globals/remaps'
  
 -- Install plugins
 require 'packer/plugins'
-

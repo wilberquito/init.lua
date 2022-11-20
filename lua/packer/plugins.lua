@@ -9,9 +9,6 @@ return require('packer').startup(function()
 	-- Packer just manages itself
 	use 'wbthomason/packer.nvim'
 
-    -- remember cursor last place
-    use 'ethanholz/nvim-lastplace'
-
 	-- nvim LSP configs
 	use 'neovim/nvim-lspconfig'
 	use 'hrsh7th/cmp-nvim-lsp'
@@ -24,6 +21,12 @@ return require('packer').startup(function()
 	----------------
 	-- Plugin development
 	----------------
+
+    -- remember cursor last place
+    use 'ethanholz/nvim-lastplace'
+
+    -- lightspeed
+    use 'ggandor/lightspeed.nvim'
 
 	-- Luasnip (primarily for hrsh7th/nvim-cmp)
 	use 'L3MON4D3/LuaSnip'
