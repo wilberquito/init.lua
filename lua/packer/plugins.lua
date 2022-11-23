@@ -63,7 +63,12 @@ return require('packer').startup(function()
 	use 'airblade/vim-gitgutter'
 
 	-- comment stuff out
-	use 'preservim/nerdcommenter'
+    use {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup()
+        end
+    }
 
 	-- Time Pope is a god
 	use 'tpope/vim-surround'
@@ -75,7 +80,7 @@ return require('packer').startup(function()
 		requires = { {'nvim-telescope/telescope.nvim'} },
 		config = function()
 			require('neoclip').setup()
-		end,
+		end
 	}
 
 	use {
