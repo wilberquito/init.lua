@@ -1,4 +1,8 @@
 -- Reference: https://github.com/williamboman/nvim-lsp-installer
+local ok, config = pcall(require, "nvim-lsp-installer")
+if not ok then
+	return
+end
 
 local lsp_installer = require("nvim-lsp-installer")
 

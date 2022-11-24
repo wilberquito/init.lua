@@ -16,7 +16,7 @@ return require('packer').startup(function()
 	use 'hrsh7th/cmp-path'
 	use 'hrsh7th/cmp-cmdline'
 	use 'hrsh7th/nvim-cmp'
-	use 'williamboman/nvim-lsp-installer'
+	use 'williamboman/mason.nvim'
 
 	----------------
 	-- Plugin development
