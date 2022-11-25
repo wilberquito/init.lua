@@ -65,4 +65,3 @@ vim.cmd[[
     endif
 ]]
 
-

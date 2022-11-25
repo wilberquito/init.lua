@@ -6,4 +6,5 @@ require 'globals/options'
 require 'globals/remaps'
  
 -- Install plugins
+-- o
 require 'packer/plugins'
