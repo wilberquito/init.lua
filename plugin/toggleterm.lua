@@ -5,7 +5,6 @@ end
 
 config.setup {
   size = 30,
-  open_mapping = '<Leader>g',
   hide_numbers = true,
   shade_filetypes = {},
   shade_terminals = true,
@@ -25,6 +24,9 @@ config.setup {
     },
   },
 }
+
+
+vim.api.nvim_set_keymap('n', '<leader>g', '<cmd>ToggleTerm<cr>', { noremap = true })
 
 function _G.set_terminal_keymaps()
   local opts = { noremap = true }
