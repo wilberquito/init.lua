@@ -28,8 +28,7 @@ cp -r ~/.config/nvim/ ~/.config/nvim-backup/
 2. Clone this repository into your `~/.config/nvim` directory
 
 ```sh
-git clone https://github.com/wilberquito/dotfiles.git 
-
+git clone https://github.com/wilberquito/dotfiles.git \
 mv dotfiles/.config ~/.config/nvim
 ```
 
