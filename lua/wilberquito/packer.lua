@@ -35,11 +35,18 @@ return require('packer').startup(function()
 	-- Load spicy gruvbox color theme
 	use 'gruvbox-community/gruvbox'
 
+    use({
+        'rose-pine/neovim',
+        as = 'rose-pine'
+    })
+
 	-- Treesitter is life
 	use {
 		'nvim-treesitter/nvim-treesitter',
 		run = ':TSUpdate'
 	}
+
+	use 'nvim-treesitter/playground'
 
 	-- Gaze deeply into the unknown
 	use {
