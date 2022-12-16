@@ -1,6 +1,6 @@
 local ok, config = pcall(require, "lspconfig")
 if not ok then
-    error("lsp config is not installed")
+    error("ERROR", "lspconfig is not installed")
 	return
 end
 
@@ -28,10 +28,11 @@ config['hls'].setup{
     autostart = true
 }
 
--- config['pyright'].setup{
---     on_attach = on_attach,
---     flags = lsp_flags,
--- }
+config['pyright'].setup{
+    on_attach = on_attach,
+    flags = lsp_flags,
+}
+
 -- config['tsserver'].setup{
 --     on_attach = on_attach,
 --     flags = lsp_flags,
