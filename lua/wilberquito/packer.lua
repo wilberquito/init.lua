@@ -35,9 +35,6 @@ return require('packer').startup(function()
 	-- Load spicy gruvbox color theme
 	use 'gruvbox-community/gruvbox'
 
-    -- Terminal
-    use "akinsho/toggleterm.nvim"
-    
 	-- Treesitter is life
 	use {
 		'nvim-treesitter/nvim-treesitter',
