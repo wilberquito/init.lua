@@ -28,7 +28,9 @@ cp -r ~/.config/nvim/ ~/.config/nvim-backup/
 2. Clone this repository into your `~/.config/nvim` directory
 
 ```sh
-git clone https://github.com/jpmcb/nvim-lua-conf.git ~/.config/nvim
+git clone https://github.com/wilberquito/dotfiles.git 
+
+mv dotfiles/.config ~/.config/nvim
 ```
 
 3. Make sure you have Packer installed on your system. You can read more about
