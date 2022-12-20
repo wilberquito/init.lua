@@ -2,8 +2,6 @@ local status_ok, lightspeed_config = pcall(require, "lightspeed")
 if not status_ok then
 	return
 end
--- NOTE: This is just illustration - there is no need to copy/paste the
--- defaults, or call `setup` at all, if you do not want to change anything.
 
 require'lightspeed'.setup {
   ignore_case = false,

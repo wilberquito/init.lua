@@ -4,4 +4,6 @@ function ColorMyWorld(color)
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end 
 
-ColorMyWorld("rose-pine")
+--ColorMyWorld("rose-pine")
+-- ColorMyWorld("catppuccin")
+ColorMyWorld("gruvbox")

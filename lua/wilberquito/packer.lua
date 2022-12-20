@@ -32,13 +32,12 @@ return require('packer').startup(function()
 	use 'L3MON4D3/LuaSnip'
 	use 'saadparwaiz1/cmp_luasnip'
 
-	-- Load spicy gruvbox color theme
-	use 'gruvbox-community/gruvbox'
+    use { "ellisonleao/gruvbox.nvim" }
 
-    use({
-        'rose-pine/neovim',
-        as = 'rose-pine'
-    })
+    -- Rose pine color theme
+    use { 'rose-pine/neovim', as = 'rose-pine' }
+
+    use { "catppuccin/nvim", as = "catppuccin" }
 
 	-- Treesitter is life
 	use {
