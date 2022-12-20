@@ -16,6 +16,8 @@ vim.api.nvim_set_keymap('n', '<leader>ds', '<cmd>lua vim.lsp.buf.signature_help(
 vim.api.nvim_set_keymap('n', '<leader>dn', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', options)
 vim.api.nvim_set_keymap('n', '<leader>dp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', options)
 
+-- note: this setting is global and should be set only once
+vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
 local lsp_flags = {
   -- This is the default in Nvim 0.7+
@@ -25,7 +27,7 @@ local lsp_flags = {
 config['hls'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
-    autostart = true
+    autostart = true,
 }
 
 config['pyright'].setup{
