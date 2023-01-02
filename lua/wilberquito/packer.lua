@@ -74,6 +74,8 @@ return require('packer').startup(function()
         end
     }
 
+    use 'folke/zen-mode.nvim'
+
 	-- Time Pope is a god
 	use 'tpope/vim-surround'
 	use 'tpope/vim-fugitive'

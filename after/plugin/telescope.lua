@@ -1,10 +1,10 @@
-local ok, config = pcall(require, "telescope")
+local ok, conf = pcall(require, "telescope")
 if not ok then
-    print("ERROR: ", "telescope not found")
+    error("ERROR - telescope not found")
 	return
 end
 
-config.setup {
+conf.setup {
   extensions = {
     fzf = {
       fuzzy = true,                    -- false will only do exact matching
