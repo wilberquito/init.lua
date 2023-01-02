@@ -30,7 +30,7 @@ map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
 
 -- Escape maps to a rolling jk
-map('i', 'jk', '<ESC>', nr_opts)
+-- map('i', 'jk', '<ESC>', nr_opts)
 
 -- Center result search
 map("n", "n", "nzz", opts)

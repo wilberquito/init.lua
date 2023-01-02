@@ -25,9 +25,6 @@ return require('packer').startup(function()
     -- remember cursor last place
     use 'ethanholz/nvim-lastplace'
 
-    -- lightspeed
-    use 'ggandor/lightspeed.nvim'
-
 	-- Luasnip (primarily for hrsh7th/nvim-cmp)
 	use 'L3MON4D3/LuaSnip'
 	use 'saadparwaiz1/cmp_luasnip'
@@ -37,6 +34,7 @@ return require('packer').startup(function()
     -- Rose pine color theme
     use { 'rose-pine/neovim', as = 'rose-pine' }
 
+    -- Catppuccin theme
     use { "catppuccin/nvim", as = "catppuccin" }
 
 	-- Treesitter is life
@@ -105,8 +103,6 @@ return require('packer').startup(function()
 	-- Typescript. Oh Typescript. Where art thou Typescript.
 	use 'jose-elias-alvarez/null-ls.nvim'
 	use 'jose-elias-alvarez/nvim-lsp-ts-utils'
-
-	use 'nvim-lua/popup.nvim'
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
