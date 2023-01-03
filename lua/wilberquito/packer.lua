@@ -9,14 +9,12 @@ return require('packer').startup(function()
     -- Packer just manages itself
     use 'wbthomason/packer.nvim'
 
-    -- nvim LSP configs
-    use 'neovim/nvim-lspconfig'
-    use 'hrsh7th/cmp-nvim-lsp'
-    use 'hrsh7th/cmp-buffer'
-    use 'hrsh7th/cmp-path'
-    use 'hrsh7th/cmp-cmdline'
-    use 'hrsh7th/nvim-cmp'
-    use 'williamboman/mason.nvim'
+    -- LSP and completion
+    use {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "neovim/nvim-lspconfig",
+    }
 
     ----------------
     -- Plugin development
@@ -24,10 +22,6 @@ return require('packer').startup(function()
 
     -- remember cursor last place
     use 'ethanholz/nvim-lastplace'
-
-    -- Luasnip (primarily for hrsh7th/nvim-cmp)
-    use 'L3MON4D3/LuaSnip'
-    use 'saadparwaiz1/cmp_luasnip'
 
     use { "ellisonleao/gruvbox.nvim" }
 
@@ -51,7 +45,7 @@ return require('packer').startup(function()
         requires = { {'nvim-lua/plenary.nvim'} }
     }
 
-    --Use fzf native for telescope
+    -- Use fzf native for telescope
     use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- nvim file tree. Alternative to NerdTree
@@ -74,6 +68,8 @@ return require('packer').startup(function()
         end
     }
 
+    use 'github/copilot.vim'
+ 
     use 'folke/zen-mode.nvim'
 
     -- Time Pope is a god
