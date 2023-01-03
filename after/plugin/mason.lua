@@ -48,7 +48,6 @@ require("lspconfig").sumneko_lua.setup(setup)
 require("lspconfig").pyright.setup(setup)
 require("lspconfig").hls.setup(setup)
 
-
 -- LSP config mappings
 local options = { noremap = true }
 vim.api.nvim_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', options)
@@ -59,3 +58,4 @@ vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', options)
 vim.api.nvim_set_keymap('n', '<leader>ds', '<cmd>lua vim.lsp.buf.signature_help()<CR>', options)
 vim.api.nvim_set_keymap('n', '<leader>dn', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', options)
 vim.api.nvim_set_keymap('n', '<leader>dp', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', options)
+
