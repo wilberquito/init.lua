@@ -1,18 +1,24 @@
-local ok, _ = pcall(require, "mason")
+local ok, _ = pcall(require, 'mason')
 if not ok then
     error('ERROR: mason not found')
     return
 end
 
-local ok, _ = pcall(require, "mason-lspconfig")
+local ok, _ = pcall(require, 'mason-lspconfig')
 if not ok then
     error('ERROR: mason-lspconfig not found')
     return
 end
 
-local ok, _ = pcall(require, "lspconfig")
+local ok, _ = pcall(require, 'lspconfig')
 if not ok then
     error('ERROR: lspconfig not found')
+    return
+end
+
+local ok, _ = pcall(require, 'cmp_nvim_lsp')
+if not ok then
+    error('ERROR: cmp_nvim_lsp not found')
     return
 end
 
@@ -59,12 +65,15 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, options)
 end
 
+-- Setup lspconfig.
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local setup = {
     flags = {
         debounce_text_changes = 100,
     },
     autostart = true,
-    on_attach = on_attach
+    on_attach = on_attach,
+    capabilities = capabilities
 }
 
 -- Mappings.
@@ -74,7 +83,6 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, options)
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, options)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, options)
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, options)
-
 
 require("lspconfig").sumneko_lua.setup(setup)
 require("lspconfig").pyright.setup(setup)

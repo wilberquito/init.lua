@@ -1,7 +1,7 @@
 local ok, nvim_tree = pcall(require, "nvim-tree")
 if not ok then
     error("ERROR - nvim-tree not found")
-  return
+    return
 end
 
 nvim_tree.setup()

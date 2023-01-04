@@ -10,6 +10,20 @@ return require('packer').startup(function()
     -- Packer just manages itself
     use 'wbthomason/packer.nvim'
 
+    -- All the lua functions I don't want to write twice.
+    use 'nvim-lua/plenary.nvim'
+
+    -- Code completation
+    use 'hrsh7th/nvim-cmp'
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-cmdline'
+
+    use 'L3MON4D3/LuaSnip'
+    use 'saadparwaiz1/cmp_luasnip'
+
+
     -- LSP and completion
     use {
         "williamboman/mason.nvim",
