@@ -1,8 +1,9 @@
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-  vim.cmd [[packadd packer.nvim]]
+    packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+        install_path })
+    vim.cmd [[packadd packer.nvim]]
 end
 
 return require('packer').startup(function()
@@ -14,6 +15,14 @@ return require('packer').startup(function()
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
+    }
+
+    -- LSP renaming with inmediate visual feedback
+    use {
+        "smjonas/inc-rename.nvim",
+        config = function()
+            require("inc_rename").setup()
+        end,
     }
 
     ----------------
@@ -42,11 +51,11 @@ return require('packer').startup(function()
     -- Gaze deeply into the unknown
     use {
         'nvim-telescope/telescope.nvim',
-        requires = { {'nvim-lua/plenary.nvim'} }
+        requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
     -- Use fzf native for telescope
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
     -- nvim file tree. Alternative to NerdTree
     use {
@@ -54,7 +63,7 @@ return require('packer').startup(function()
         requires = {
             'kyazdani42/nvim-web-devicons', -- optional, for file icon
         },
-        config = function() require'nvim-tree'.setup {} end
+        config = function() require 'nvim-tree'.setup {} end
     }
 
     -- Git stuff
@@ -69,7 +78,7 @@ return require('packer').startup(function()
     }
 
     use 'github/copilot.vim'
- 
+
     use 'folke/zen-mode.nvim'
 
     -- Time Pope is a god
@@ -79,7 +88,7 @@ return require('packer').startup(function()
     -- Yanking manager (yeah yeah I know, registers exist)
     use {
         "AckslD/nvim-neoclip.lua",
-        requires = { {'nvim-telescope/telescope.nvim'} },
+        requires = { { 'nvim-telescope/telescope.nvim' } },
         config = function()
             require('neoclip').setup()
         end
@@ -93,14 +102,10 @@ return require('packer').startup(function()
     use {
         'goolord/alpha-nvim',
         requires = { 'kyazdani42/nvim-web-devicons' },
-        config = function ()
-            require'alpha'.setup(require'alpha.themes.theta'.config)
+        config = function()
+            require 'alpha'.setup(require 'alpha.themes.theta'.config)
         end
     }
-
-    -- Typescript. Oh Typescript. Where art thou Typescript.
-    use 'jose-elias-alvarez/null-ls.nvim'
-    use 'jose-elias-alvarez/nvim-lsp-ts-utils'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
@@ -108,4 +113,3 @@ return require('packer').startup(function()
         require('packer').sync()
     end
 end)
-
