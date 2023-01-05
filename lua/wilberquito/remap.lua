@@ -46,3 +46,7 @@ map("v", "{", "}", opts)
 map("n", "<S-l>", ":bnext<CR>", opts)
 map("n", "<S-h>", ":bprevious<CR>", opts)
 
+-- Select all
+map("n", "<leader>va", "ggVG", opts)
+map("n", "va", "ggVG", opts)
+
