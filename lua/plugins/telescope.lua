@@ -35,6 +35,10 @@ return {
             vim.keymap.set("n", "<leader>fg", builtin.live_grep, {
                 desc = "Live grep",
             })
+
+            vim.keymap.set("n", "<leader>fb", builtin.buffers, {
+                desc = "Buffers",
+            })
         end,
     }
 }
