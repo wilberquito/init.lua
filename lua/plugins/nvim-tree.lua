@@ -9,15 +9,24 @@ return {
       local api = require("nvim-tree.api")
 
       require("nvim-tree").setup({
+        -- Close the tree once the file is open, so <leader>e from the tree lands
+        -- straight in the code. <leader>e brings the tree back.
+        actions = {
+          open_file = {
+            quit_on_open = true,
+          },
+        },
+
         -- Keep the tree cursor on the file of the current buffer, expanding the
-        -- parent folders, and move the root when the file is outside of it.
+        -- parent folders. The root is left alone, so the tree comes back to the
+        -- folder you were browsing instead of jumping to the opened file.
         update_focused_file = {
           enable = true,
           exclude = function(args)
             return not vim.api.nvim_buf_is_valid(args.buf) or vim.bo[args.buf].buftype ~= ""
           end,
           update_root = {
-            enable = true,
+            enable = false,
           },
         },
 
