@@ -17,6 +17,11 @@ return {
           },
         },
 
+        -- Open tree to the right
+        view = {
+          side = "right",
+        },
+
         -- Keep the tree cursor on the file of the current buffer, expanding the
         -- parent folders. The root is left alone, so the tree comes back to the
         -- folder you were browsing instead of jumping to the opened file.
