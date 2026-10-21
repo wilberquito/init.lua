@@ -48,6 +48,9 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost" }, {
   end,
 })
 
+-- No wrap text for fiting in view
+vim.opt.wrap = false
+
 local map_opts = { noremap = true, silent = true }
 
 local function map(mode, lhs, rhs, desc)
@@ -73,6 +76,8 @@ map("n", "g;", ";;", "Repeat last find")
 -- Diagnostics
 map("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
 map("n", "[d", vim.diagnostic.goto_prev, "Previous diagnostic")
+
+
 
 -- clipboard configuration for remote ssh connections
 if os.getenv("SSH_CONNECTION") then
