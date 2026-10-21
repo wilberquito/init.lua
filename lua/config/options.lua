@@ -37,6 +37,9 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 -- Ask before quitting with unsaved changes
 vim.opt.confirm = true
 
+-- About buffers
+vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Close buffer" })
+
 -- Keep the undo history in memory, so `u` reaches across buffer reloads
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost" }, {
   group = vim.api.nvim_create_augroup("options", { clear = true }),
