@@ -13,7 +13,8 @@ return {
         changedelete = { text = "▎" },
         untracked = { text = "┆" },
       },
-      signcolumn = true,
+      -- signcolumn is set globally (`options.lua`), so text never shifts when
+      -- a buffer is inside a git repo and the next one is not.
       numhl = false,
       current_line_blame = false,
       current_line_blame_opts = {

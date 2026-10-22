@@ -3,6 +3,8 @@ return {
     "saghen/blink.cmp",
     event = "InsertEnter",
     version = "*",
+    -- optional: snippets for the snippet source
+    dependencies = { "rafamadriz/friendly-snippets" },
     opts = {
       -- The 'default' preset already gives us:
       --   <C-Space> show menu + docs, <C-y> accept, <C-n>/<C-p> move,
@@ -16,7 +18,8 @@ return {
       },
 
       sources = {
-        default = { "lsp", "path", "buffer" },
+        -- 'snippets' is in blink's own default; leaving it out disables it
+        default = { "lsp", "path", "snippets", "buffer" },
       },
 
       fuzzy = {

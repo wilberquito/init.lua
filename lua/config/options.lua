@@ -2,6 +2,9 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Colours: kept here so the theme never depends on another plugin loading first
+vim.opt.termguicolors = true
+
 vim.opt.expandtab = true      -- Use spaces instead of tabs
 vim.opt.tabstop = 4           -- Number of spaces a tab counts for
 vim.opt.shiftwidth = 4        -- Spaces used for autoindent
@@ -12,10 +15,6 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
 
--- Moving content around without tok
-vim.keymap.set("v", ">", ">gv")
-vim.keymap.set("v", "<", "<gv")
-
 -- Smart search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
@@ -25,6 +24,11 @@ vim.opt.inccommand = "split"
 vim.opt.autoindent = true
 vim.opt.smartindent = true
 
+-- Splits and statusline: always the same layout, one bar for the whole screen
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+vim.opt.laststatus = 3
+
 -- Quality of life
 vim.opt.undofile = true
 vim.opt.updatetime = 250
@@ -33,13 +37,30 @@ vim.opt.splitkeep = "screen"
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 8
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
+vim.opt.pumheight = 10        -- the completion menu never eats half the screen
+vim.opt.wildoptions = "pum"   -- `:` completion in a popup
+vim.opt.shortmess:append("c") -- no "Press ENTER" for every message
+vim.opt.signcolumn = "yes"    -- never shift text when signs appear
 
 -- Ask before quitting with unsaved changes
 vim.opt.confirm = true
 
--- About buffers
-vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Close buffer" })
-vim.keymap.set("n", "<leader>x", "<cmd>bdelete<CR>", { desc = "Close buffer" })
+-- No wrap text for fiting in view
+vim.opt.wrap = false
+
+-- Show tabs and trailing spaces without being obnoxious about it
+vim.opt.list = true
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+
+-- Rounded borders on every floating window: hover, diagnostics, pickers, ...
+vim.o.winborder = "rounded"
+
+-- Diagnostics: sorted by severity, readable float that says who is complaining
+vim.diagnostic.config({
+  severity_sort = true,
+  virtual_text = { spacing = 2, prefix = "●" },
+  float = { border = "rounded", source = true },
+})
 
 -- Keep the undo history in memory, so `u` reaches across buffer reloads
 vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost" }, {
@@ -48,37 +69,6 @@ vim.api.nvim_create_autocmd({ "BufReadPost", "BufWritePost" }, {
     vim.o.undolevels = vim.o.undolevels
   end,
 })
-
--- No wrap text for fiting in view
-vim.opt.wrap = false
-
-local map_opts = { noremap = true, silent = true }
-
-local function map(mode, lhs, rhs, desc)
-  vim.keymap.set(mode, lhs, rhs, vim.tbl_extend("force", map_opts, { desc = desc }))
-end
-
--- Window navigation
-map("n", "<C-h>", "<C-w>h", "Window left")
-map("n", "<C-j>", "<C-w>j", "Window down")
-map("n", "<C-k>", "<C-w>k", "Window up")
-map("n", "<C-l>", "<C-w>l", "Window right")
-
--- Clear search highlight
-map("n", "<Esc>", "<cmd>nohlsearch<CR>", "Clear search highlight")
-
--- Save and close
-map("n", "<leader>w", "<cmd>write<CR>", "Write buffer")
-map("n", "<leader>q", "<cmd>quit<CR>", "Quit window")
-
--- Repeat the last f/t motion
-map("n", "g;", ";;", "Repeat last find")
-
--- Diagnostics
-map("n", "]d", vim.diagnostic.goto_next, "Next diagnostic")
-map("n", "[d", vim.diagnostic.goto_prev, "Previous diagnostic")
-
-
 
 -- clipboard configuration for remote ssh connections
 if os.getenv("SSH_CONNECTION") then

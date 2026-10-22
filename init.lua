@@ -15,10 +15,17 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require("config.autocmds")
+-- options first: it sets the leader, and keymaps depend on it
 require("config.options")
+require("config.autocmds")
+require("config.keymaps")
 
-require("lazy").setup("plugins")
-
-
-
+require("lazy").setup("plugins", {
+    -- avoids the default-theme flash on a fresh install
+    install = { colorscheme = { "catppuccin" } },
+    ui = { border = "rounded" },
+    -- drop plugins that were removed from specs from the runtimepath
+    performance = { rtp = { reset = true } },
+    -- lazy-lock.json is committed: update plugins on purpose, not on startup
+    checker = { enabled = false },
+})

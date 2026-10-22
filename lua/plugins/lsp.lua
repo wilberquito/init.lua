@@ -1,11 +1,14 @@
 return {
   {
     "mason-org/mason.nvim",
+    cmd = "Mason",
     opts = {},
   },
 
   {
     "mason-org/mason-lspconfig.nvim",
+    -- BufReadPre fires before FileType, so servers are still enabled in time.
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
       ensure_installed = {
         "clangd",

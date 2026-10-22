@@ -10,10 +10,12 @@ return {
     opts = {
       formatters_by_ft = {
         python = { "black" },
-        sh = { "trimmed" },
-        bash = { "trimmed" },
-        markdown = { "trimmed" },
-        yaml = { "trimmed" },
+        -- "trimmed" is not a conform formatter; the real names are
+        -- trim_whitespace / trim_newlines.
+        sh = { "trim_whitespace" },
+        bash = { "trim_whitespace" },
+        markdown = { "trim_whitespace" },
+        yaml = { "trim_whitespace" },
       },
 
       formatters = {
