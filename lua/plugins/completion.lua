@@ -34,7 +34,12 @@ return {
         },
         documentation = {
           auto_show = true,
-          border = "rounded",
+          -- `border` goes inside `window`: blink validates the shape and a
+          -- top-level `documentation.border` is an "Unexpected field in
+          -- configuration" (lua/blink/cmp/config/completion/documentation.lua).
+          window = {
+            border = "rounded",
+          },
         },
       },
 

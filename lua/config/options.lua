@@ -18,7 +18,10 @@ vim.opt.cursorline = true
 -- Smart search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
-vim.opt.inccommand = "split"
+-- Live preview of `:s` highlighted INSIDE the buffer. "split" would also open a
+-- preview window at the bottom, which fights with noice's centred cmdline.
+-- ("nosplit" is Neovim's default anyway.)
+vim.opt.inccommand = "nosplit"
 
 -- Indenting
 vim.opt.autoindent = true
@@ -28,6 +31,19 @@ vim.opt.smartindent = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.laststatus = 3
+
+-- The cmdline row is gone: noice draws the cmdline in a centred float, so that
+-- extra line was pure dead space under the statusline. Neovim shows it only
+-- while it is in use (and paints over the last line meanwhile).
+vim.opt.cmdheight = 0
+-- No `-- INSERT --` text and no ruler: lualine shows the mode, and its
+-- `location` + `progress` components replaced the ruler.
+vim.opt.showmode = false
+vim.opt.ruler = false
+-- Let nvim set the terminal title via OSC 2. tmux reads it into `pane_title`,
+-- and that is what the tmux tab shows as the file name.
+vim.opt.title = true
+vim.opt.titlestring = "%t"
 
 -- Quality of life
 vim.opt.undofile = true

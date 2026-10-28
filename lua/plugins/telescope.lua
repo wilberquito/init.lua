@@ -93,6 +93,8 @@ return {
             local telescope = require("telescope")
 
             telescope.load_extension("fzf")
+            -- `:Noice telescope`: the message history, but searchable.
+            telescope.load_extension("noice")
 
             telescope.setup({
                 defaults = {
