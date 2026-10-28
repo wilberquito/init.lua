@@ -5,7 +5,12 @@
 local palette = {
   crust = "#11111b",
   surface_0 = "#313244",
-  surface_2 = "#585b70",
+  -- Separators were `surface2` #585b70, which on the strip lands at 1.88:1 --
+  -- the "hay algo mal tipeado" kind of grey. overlay0 is the next rung up and
+  -- reads as a deliberate line instead: measured 2.57:1 on the strip. Still
+  -- under 4.5 on purpose: it is decoration, not text, so it must not compete
+  -- with the tab names (5.65) or with the lavender block.
+  overlay_0 = "#6c7086",
   subtext_0 = "#a6adc8",
   lavender = "#b4befe",
   peach = "#fab387",
@@ -29,16 +34,16 @@ local elements = {
   -- group. With only a `bg` here the name kept the plugin's own #9399b2 while
   -- the modified dot used subtext_0, so a modified buffer showed TWO greys.
   background = { fg = palette.subtext_0, bg = palette.surface_0 },
-  offset_separator = { fg = palette.surface_2, bg = palette.surface_0 },
+  offset_separator = { fg = palette.overlay_0, bg = palette.surface_0 },
 
   -- Padding that keeps every tab the same height/shape even without indicator
   -- or close icon. Omit it and the first cell of the bar keeps `Normal` bg.
   indicator_selected = { fg = palette.crust, bg = palette.lavender },
   indicator_visible = { fg = palette.subtext_0, bg = palette.surface_0 },
 
-  separator = { fg = palette.surface_2, bg = palette.surface_0 },
-  separator_visible = { fg = palette.surface_2, bg = palette.surface_0 },
-  separator_selected = { fg = palette.surface_2, bg = palette.lavender },
+  separator = { fg = palette.overlay_0, bg = palette.surface_0 },
+  separator_visible = { fg = palette.overlay_0, bg = palette.surface_0 },
+  separator_selected = { fg = palette.overlay_0, bg = palette.lavender },
 }
 
 -- Buffer name, modified dot and duplicate marker: readable grey on the strip,
