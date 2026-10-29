@@ -71,10 +71,14 @@ vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 -- Rounded borders on every floating window: hover, diagnostics, pickers, ...
 vim.o.winborder = "rounded"
 
--- Diagnostics: sorted by severity, readable float that says who is complaining
+-- Diagnostics: sorted by severity, readable float that says who is complaining.
+-- No inline messages: the sign column ("E"/"W"), the underline and lualine's
+-- counter already say something is wrong, and <leader>ld (or ]d / [d, which
+-- float on jump) shows the message when you actually care. `<leader>lt` in
+-- keymaps.lua hides the whole layer for a moment.
 vim.diagnostic.config({
   severity_sort = true,
-  virtual_text = { spacing = 2, prefix = "●" },
+  virtual_text = false,
   float = { border = "rounded", source = true },
 })
 
