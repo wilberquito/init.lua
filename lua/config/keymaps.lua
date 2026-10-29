@@ -106,6 +106,13 @@ map("n", "[d", function()
   vim.diagnostic.jump({ count = -1, float = true })
 end, "Previous diagnostic")
 
+-- One switch for the whole diagnostic layer: signs, underline and floats.
+-- `enable(false)` does not delete the diagnostics, it only stops the handlers
+-- from drawing them, so `]d`/`[d` still navigate while hidden.
+map("n", "<leader>lt", function()
+  vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, "Toggle diagnostics")
+
 -- Clipboard: explicit mappings on purpose. Setting `clipboard=unnamedplus`
 -- sends every yank to the OS, which over SSH (OSC 52) pays latency on each one.
 map({ "n", "v" }, "<leader>y", '"+y', "Yank to OS clipboard")
