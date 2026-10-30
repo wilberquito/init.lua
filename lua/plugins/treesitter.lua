@@ -1,3 +1,6 @@
+-- One list, two callers: this spec and the headless bootstrap.
+local languages = require("config.treesitter").languages
+
 return {
   {
     "nvim-treesitter/nvim-treesitter",
@@ -5,34 +8,17 @@ return {
     lazy = false,
     build = ":TSUpdate",
     config = function()
-      -- No-op for parsers already installed; the download runs async.
-      require("nvim-treesitter").install({
-        "bash",
-        "c",
-        "css",
-        "diff",
-        "html",
-        "javascript",
-        "jsdoc",
-        "json",
-        "json5",
-        "lua",
-        "luadoc",
-        "markdown",
-        "markdown_inline",
-        "printf",
-        "python",
-        "query",
-        "regex",
-        "svelte",
-        "toml",
-        "tsx",
-        "typescript",
-        "vim",
-        "vimdoc",
-        "xml",
-        "yaml",
-      })
+      -- The `main` branch compiles parsers by shelling out to the external
+      -- `tree-sitter` CLI, so without it every language fails on every start
+      -- and the only trace is :TSLog (the log lives in memory).
+      --
+      -- The CLI is a program: install/nvim.sh (macOS/Arch) or npm (older APT /
+      -- DNF distros) provides it. The parsers are downloaded files and are
+      -- built by script/bootstrap. Here we only fill in whatever is missing,
+      -- and stay quiet when the CLI is absent (offline box, cluster, CI).
+      if vim.fn.executable("tree-sitter") == 1 then
+        require("nvim-treesitter").install(languages)
+      end
 
       -- Highlights are opt-in on the `main` branch, and so are folds.
       vim.api.nvim_create_autocmd("FileType", {
