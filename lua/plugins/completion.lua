@@ -8,9 +8,26 @@ return {
     opts = {
       -- The 'default' preset already gives us:
       --   <C-Space> show menu + docs, <C-y> accept, <C-n>/<C-p> move,
-      --   <Tab>/<S-Tab> snippets (falls through to a normal tab), <C-k> signature.
+      --   <C-k> signature. Its <Tab>/<S-Tab> only jump snippets, so they are
+      --   overridden below with the VS Code flow.
       keymap = {
         preset = "default",
+
+        -- Menu visible -> cycle the list (blink wraps around by default, since
+        -- completion.list.cycle.from_top/from_bottom are true). Menu hidden ->
+        -- jump snippet placeholders, then fall through to a normal tab. Every
+        -- command returns early when it does not apply, so the chain degrades
+        -- instead of swallowing the key.
+        ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+        ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+
+        -- Accept the highlighted item. `completion.list.selection.preselect`
+        -- defaults to true, so the first candidate is already highlighted while
+        -- the menu is up (its inline preview only appears once you move with
+        -- <Tab>, since `auto_insert` follows an explicit selection).
+        -- `select_and_accept` also covers a list opened manually via <C-space>;
+        -- with no menu, `fallback` gives us a plain newline.
+        ["<CR>"] = { "select_and_accept", "fallback" },
       },
 
       appearance = {
