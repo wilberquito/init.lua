@@ -9,8 +9,8 @@ return {
       local api = require("nvim-tree.api")
 
       require("nvim-tree").setup({
-        -- Close the tree once the file is open, so <leader>e from the tree lands
-        -- straight in the code. <leader>e brings the tree back.
+        -- Close the tree once the file is open, so <leader>t from the tree lands
+        -- straight in the code. <leader>t brings the tree back.
         actions = {
           open_file = {
             quit_on_open = true,
@@ -42,18 +42,23 @@ return {
 
       local last_win = nil
 
-      vim.keymap.set("n", "<leader>e", function()
+      -- `t` for tree. Not `e`: in the shell `e` is `$EDITOR`, and here <leader>n
+      -- is navigation (yazi), so the letters mean one thing across both worlds.
+      vim.keymap.set("n", "<leader>t", function()
         local tree_win = api.tree.winid()
 
         if tree_win == nil or tree_win ~= vim.api.nvim_get_current_win() then
           last_win = vim.api.nvim_get_current_win()
           api.tree.open()
         else
+          -- Leave the tree BEFORE closing it: api.tree.close() while the tree
+          -- holds focus makes nvim pick a neighbour for us. This mirrors what
+          -- quit_on_open does — it closes through view.close() -> this tab only
+          -- (tab.sync.close is false by default), not every tab.
           if last_win and vim.api.nvim_win_is_valid(last_win) then
             vim.api.nvim_set_current_win(last_win)
-          else
-            vim.cmd("wincmd p")
           end
+          api.tree.close()
         end
       end, {
         desc = "Toggle focus file tree",
