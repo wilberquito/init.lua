@@ -18,9 +18,14 @@ return {
         keys = {
             {
                 "<leader>ff",
-                -- hidden: dotfiles and .github/ are usually what we are looking for
+                -- Hidden files: dotfiles and .github/ are usually what we are
+                -- looking for. But `--hidden` also walks .git/ (objects, hooks,
+                -- modules): in the dotfiles repo that was 860 of 942 results.
+                -- .gitignore never covers .git/ itself, so exclude it here.
                 function()
-                    require("telescope.builtin").find_files({ hidden = true })
+                    require("telescope.builtin").find_files({
+                        find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+                    })
                 end,
                 desc = "Find files",
             },

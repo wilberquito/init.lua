@@ -34,3 +34,27 @@ vim.api.nvim_create_autocmd({ "CmdlineEnter", "InsertEnter" }, {
     end
   end,
 })
+
+
+-- Pin the global cwd to the git root of the file you are editing. Neither entry
+-- point does it for us: the shell `n` (yazi) starts nvim with cwd = the folder
+-- of the picked file, and yazi.nvim opens files without touching the cwd. Both
+-- left Telescope (<leader>ff / <leader>fg) searching a deep, near-empty folder.
+--
+-- Global `:cd`, so Telescope, nvim-tree (sync_root_with_cwd) and `Yazi cwd`
+-- all agree. We compare with the LAST root we set, not with the cwd: moving the
+-- cwd by hand (tree `-`, `:cd`) sticks until you enter a file from another repo.
+-- Files outside any repo leave the cwd alone.
+local last_root = nil
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function(args)
+    if vim.bo[args.buf].buftype ~= "" or vim.api.nvim_buf_get_name(args.buf) == "" then
+      return
+    end
+    local root = vim.fs.root(args.buf, ".git")
+    if root and root ~= last_root then
+      last_root = root
+      vim.cmd.cd(root)
+    end
+  end,
+})

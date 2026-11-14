@@ -9,11 +9,22 @@ return {
       local api = require("nvim-tree.api")
 
       require("nvim-tree").setup({
+        -- One cwd for everything. config/autocmds.lua pins the global cwd to
+        -- the buffer's git root; the tree follows it, and moving the tree root
+        -- (`-`, <C-]>) does a global `:cd` instead of the default window-local
+        -- `:lcd` — otherwise Telescope, run from the code window, kept
+        -- searching the old, deeper folder.
+        sync_root_with_cwd = true,
+        respect_buf_cwd = true,
+
         -- Close the tree once the file is open, so <leader>t from the tree lands
         -- straight in the code. <leader>t brings the tree back.
         actions = {
           open_file = {
             quit_on_open = true,
+          },
+          change_dir = {
+            global = true,
           },
         },
 
