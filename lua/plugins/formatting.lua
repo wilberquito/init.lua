@@ -40,20 +40,21 @@ return {
       lsp_format = "fallback",
     },
 
+    -- Under <leader>c (code), next to <leader>ca. Not <leader>f: that is the
+    -- prefix of every Telescope picker, and a mapping on the prefix itself makes
+    -- each <leader>f… wait `timeoutlen` for a possible second key.
     keys = {
       {
-        "<leader>f",
+        "<leader>cf",
         function()
-          require("conform").format_sync({ async = true, lsp_format = "fallback" })
+          require("conform").format({ async = true, lsp_format = "fallback" })
         end,
         mode = { "n", "v" },
         desc = "Format buffer",
       },
       {
-        "<leader>fi",
-        function()
-          require("conform").format_info()
-        end,
+        "<leader>ci",
+        "<cmd>ConformInfo<CR>",
         mode = { "n" },
         desc = "Formatter info",
       },

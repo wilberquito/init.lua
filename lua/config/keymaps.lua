@@ -17,9 +17,29 @@ map("n", "<C-l>", "<C-w>l", "Window right")
 -- Clear search highlight
 map("n", "<Esc>", "<cmd>nohlsearch<CR>", "Clear search highlight")
 
--- Keep the search results centered on screen
-map("n", "n", "nzzzv", "Next match")
-map("n", "N", "Nzzzv", "Previous match")
+-- Every jump lands at the TOP of the screen (`zt`), so what you jumped to is
+-- read top-down, with the rest of it below. `scrolloff` (12) keeps that many
+-- lines of context above the cursor, so it never sticks to the very first row.
+-- `zv` opens folds the match might be hiding in.
+--
+-- `G` is left alone on purpose: `Gzt` would put the last line at the top and
+-- leave the screen empty below it.
+map("n", "n", "nztzv", "Next match")
+map("n", "N", "Nztzv", "Previous match")
+map("n", "<C-d>", "<C-d>zt", "Half page down (top)")
+map("n", "<C-u>", "<C-u>zt", "Half page up (top)")
+map("n", "*", "*ztzv", "Next word under cursor")
+map("n", "#", "#ztzv", "Previous word under cursor")
+map("n", "{", "{zt", "Previous paragraph (top)")
+map("n", "}", "}zt", "Next paragraph (top)")
+-- Jumplist. In a terminal <C-i> and <Tab> are the same byte, so this also
+-- remaps <Tab> in normal mode -- to exactly what it already did, plus `zt`.
+map("n", "<C-o>", "<C-o>zt", "Jump back (top)")
+map("n", "<C-i>", "<C-i>zt", "Jump forward (top)")
+
+-- Alternate buffer: the file you were in just before. A leaf on purpose, so it
+-- never waits `timeoutlen` for a second key.
+map("n", "<leader><leader>", "<C-^>", "Alternate buffer")
 
 -- Save and close
 map("n", "<leader>w", "<cmd>write<CR>", "Write buffer")

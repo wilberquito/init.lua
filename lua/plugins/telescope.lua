@@ -79,6 +79,20 @@ return {
                 desc = "Recent files",
             },
             {
+                "<leader>fm",
+                function()
+                    require("telescope.builtin").marks()
+                end,
+                desc = "Marks",
+            },
+            {
+                "<leader>fj",
+                function()
+                    require("telescope.builtin").jumplist()
+                end,
+                desc = "Jumplist",
+            },
+            {
                 "<leader>fh",
                 function()
                     require("telescope.builtin").help_tags()
