@@ -92,6 +92,13 @@ return {
                 end,
                 desc = "Keymaps",
             },
+            {
+                "<leader>fm",
+                function()
+                    require("telescope.builtin").marks()
+                end,
+                desc = "Marks",
+            },
         },
 
         config = function()
@@ -107,6 +114,17 @@ return {
                         i = {
                             ["<C-j>"] = "move_selection_next",
                             ["<C-k>"] = "move_selection_previous",
+                        },
+                    },
+                },
+                pickers = {
+                    -- The marks picker ships `actions.delete_mark` but maps it to
+                    -- nothing. <Tab> to multi-select, then delete them all at once.
+                    -- <C-d> overrides preview scrolling, but only in this picker.
+                    marks = {
+                        mappings = {
+                            i = { ["<C-d>"] = "delete_mark" },
+                            n = { ["dd"] = "delete_mark" },
                         },
                     },
                 },

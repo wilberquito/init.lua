@@ -95,6 +95,18 @@ vim.api.nvim_create_autocmd("CmdlineEnter", {
   end,
 })
 
+-- `:marks` (bare) -> telescope marks picker
+--
+-- Hooked on <CR> instead of a `cnoreabbrev`: an abbreviation also fires on the
+-- space, so `:marks a` would turn into `:Telescope marks a`. Here only an exact
+-- `:marks` is redirected; `:marks abc` still runs the builtin with its filter.
+vim.keymap.set("c", "<CR>", function()
+  if vim.fn.getcmdtype() == ":" and vim.fn.getcmdline():match("^%s*marks%s*$") then
+    return "<C-u>Telescope marks<CR>"
+  end
+  return "<CR>"
+end, { expr = true, desc = "Bare :marks opens Telescope marks" })
+
 -- Repeat the last f/t motion
 map("n", "g;", ";;", "Repeat last find")
 
