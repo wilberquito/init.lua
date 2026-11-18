@@ -31,15 +31,21 @@ return {
             },
             {
                 "<leader>fg",
+                -- Same reasoning as <leader>ff: rg skips dotfiles by default,
+                -- so grep them too but keep .git/ out of the results.
                 function()
-                    require("telescope.builtin").live_grep()
+                    require("telescope.builtin").live_grep({
+                        additional_args = { "--hidden", "--glob", "!**/.git/*" },
+                    })
                 end,
                 desc = "Live grep",
             },
             {
                 "<leader>fs",
                 function()
-                    require("telescope.builtin").grep_string()
+                    require("telescope.builtin").grep_string({
+                        additional_args = { "--hidden", "--glob", "!**/.git/*" },
+                    })
                 end,
                 desc = "Grep word under cursor",
             },
