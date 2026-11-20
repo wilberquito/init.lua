@@ -48,6 +48,38 @@ return {
 
         on_attach = function(bufnr)
           api.config.mappings.default_on_attach(bufnr)
+
+          local function opts(desc)
+            return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+          end
+
+          -- Vim-style tree walking, folders only (<CR> opens files):
+          --   l: expand a closed folder, step into an open one.
+          --   h: collapse an open folder, otherwise jump to the parent and
+          --      collapse it.
+          vim.keymap.set("n", "l", function()
+            local node = api.tree.get_node_under_cursor()
+            if not node or node.type ~= "directory" then
+              return
+            end
+            if node.open then
+              vim.cmd("normal! j")
+            else
+              api.node.open.edit()
+            end
+          end, opts("Expand folder"))
+
+          vim.keymap.set("n", "h", function()
+            local node = api.tree.get_node_under_cursor()
+            if not node then
+              return
+            end
+            if node.type == "directory" and node.open then
+              api.node.open.edit()
+            else
+              api.node.navigate.parent_close()
+            end
+          end, opts("Collapse folder / go to parent"))
         end,
       })
 
